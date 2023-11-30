@@ -1,8 +1,10 @@
 from django.urls import path
-from .views import TodosView,TasksView
+from .views import TodosView,TodoDetailsview,TasksView,TaskDetailsView
 
 
 urlpatterns = [
-    path('<int:user_id>/todos/', TodosView.as_view()),
-    path("<int:user_id>/todos/<int:todo_id>/task", TasksView.as_view())
+    path('todos', TodosView.as_view()),
+    path("todos/<int:todo_id>", TodoDetailsview.as_view()),
+    path("todos/<int:todo_id>/tasks",TasksView.as_view()),
+    path("todos/<int:todo_id>/task/<int:task_id>",TaskDetailsView.as_view()),
 ]
